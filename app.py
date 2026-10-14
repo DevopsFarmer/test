@@ -3,7 +3,6 @@ from fastapi import FastAPI
 
 def create_healthcheck_app():
     
-
     app = FastAPI()
 
     @app.get("/health")
@@ -11,3 +10,11 @@ def create_healthcheck_app():
         return {"status": "healthy"}
 
     return app
+
+def create_app():
+    app = FastAPI()
+    healthcheck_app = create_healthcheck_app()
+    app.mount("/health", healthcheck_app)
+    return app
+
+
