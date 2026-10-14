@@ -18,3 +18,7 @@ def create_app():
     return app
 
 
+def main():
+    app = create_app()
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
